@@ -1,0 +1,4 @@
+function [] = ClearTensorForm(app)
+    
+end
+

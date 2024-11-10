@@ -1,0 +1,8 @@
+function [outputArg1,outputArg2] = PrepareExcitationVectors_FieldDistribution(inputArg1,inputArg2)
+
+    E0=1;PortIndex=0;for ii=1:numel(BoundaryConditions),if(BoundaryConditions(ii).Type=="Port" && BoundaryConditions(ii).IsActive==1),PortIndex=ii;end,end
+    if(PortIndex~=0),PortBoundary=BoundaryConditions(PortIndex);Einc=zeros(numel(PortBoundary.Edges),1);
+        for ii=1:numel(PortBoundary.Edges),edge=Edges(PortBoundary.Edges(ii));Node1=Vertices(edge.Vertices(1));Node2=Vertices(edge.Vertices(2));y1=Node1.Y;y2=Node2.Y;z1=Node1.Z;z2=Node2.Z;Length=edge.Length;fun = @(x) cos(pi*(y1+x*(y2-y1))/Ly);Einc(edge.PortIndex)=(z2-z1)*E0*integral(fun,0,1);end
+    end
+end
+
