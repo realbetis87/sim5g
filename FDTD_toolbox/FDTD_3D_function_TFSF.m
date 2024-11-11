@@ -9,9 +9,9 @@ ta=3./(pi*BW);
 lambda=c0/f; % reference wavelength
 
 % spatial parameters
-dx = lambda/domain.wl_ratio
-dy = lambda/domain.wl_ratio
-dz = lambda/domain.wl_ratio
+dx = lambda/domain.wl_ratio;
+dy = lambda/domain.wl_ratio;
+dz = lambda/domain.wl_ratio;
 N=round(domain.length(1)/dx);
 M=round(domain.length(2)/dy);
 K=round(domain.length(3)/dz);
@@ -829,7 +829,7 @@ for n=0:T
     pcolor(squeeze(Ey(28,:,:)))
     axis image
     shading interp
-    caxis([-1e-3 1e-3])
+    caxis([-1e-3 1e-3]);
     title(['n=',num2str(n)])
     getframe;
     
