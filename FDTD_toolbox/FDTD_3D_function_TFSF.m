@@ -28,7 +28,7 @@ EySource = [];
 EzSource = [];
 
 
-round(source.EzLocation(1,1)*N),round(source.EzLocation(1,2)*M),round(source.EzLocation(1,3)*K)
+% round(source.EzLocation(1,1)*N),round(source.EzLocation(1,2)*M),round(source.EzLocation(1,3)*K)
 
 for i=1:size(source.ExLocation,1)
     ExSource(i) = sub2ind([N M K],round(source.ExLocation(i,1)*N),round(source.ExLocation(i,2)*M),round(source.ExLocation(i,3)*K));
@@ -358,7 +358,12 @@ end
 
 tic
 
+disp('Simulation started')
+
 for n=0:T
+    if ~mod(n, round(T / 10))
+        fprintf('Progress: %.0f%%\n', (n / T) * 100);
+    end
     
     %Js = exp(-((dt * n - 3 * ta) / ta) * ((dt * n - 3 * ta) / ta)) * sin(2 * pi * f * (dt * n - 3 * ta));
     if source.TFSF
@@ -826,12 +831,12 @@ for n=0:T
         freq_normalizationH(i) = freq_normalizationH(i) + Cb(floor(N/2),floor(M/2),floor(K/2))*Js(n+1)*(cos1-1i*sin1);
     end
     
-    pcolor(squeeze(Ey(28,:,:)))
-    axis image
-    shading interp
-    caxis([-1e-3 1e-3]);
-    title(['n=',num2str(n)])
-    getframe;
+    % pcolor(squeeze(Ey(28,:,:)))
+    % axis image
+    % shading interp
+    % caxis([-1e-3 1e-3]);
+    % title(['n=',num2str(n)])
+    % getframe;
     
 end
 
