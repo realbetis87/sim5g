@@ -831,10 +831,10 @@ for n=0:T
         freq_normalizationH(i) = freq_normalizationH(i) + Cb(floor(N/2),floor(M/2),floor(K/2))*Js(n+1)*(cos1-1i*sin1);
     end
     
-    % pcolor(squeeze(Ey(28,:,:)))
+    % pcolor(squeeze(Ez(50,:,:)))
     % axis image
     % shading interp
-    % caxis([-1e-3 1e-3]);
+    % caxis([-1e-5 1e-5]);
     % title(['n=',num2str(n)])
     % getframe;
     
